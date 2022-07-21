@@ -1,0 +1,100 @@
+@Library('SharedLibrary@projectH') _
+import lib.Utility
+def RootAndroid = "D:\\JenkinsPipeline\\ZjxFM.AirTest.PC"
+def RootWin = "D:\\JenkinsPipeline\\ZjxFM.AirTest.PC"
+def projectRoot = "D:\\JenkinsPipeline\\ZjxFM.AirTest.PC"
+def ProjectPathClient = "GameProject\\Client\\TargetProject"
+
+def resourceFolder = "gameServerSettings\\projectZ"
+def currentTime = Utility.GetCurrentDate("yyyyMMdd")
+def BuildId = "Z_${params.versionPrefix}_${currentTime}_${env.BUILD_NUMBER}"
+def Region = "CN"
+ProjectZTest(
+    [
+        
+        "AssignedLabel":"192.168.7.108",
+        "AssignedLabel_Android":"192.168.7.108",
+        "AssignedLabel_Win":"192.168.7.108",
+        // "Branches":[["name":"origin/ProjectZ/PBT1"]],
+        // "UserRemoteConfigs":[["url": "ssh://git@192.168.5.38:4422/projectZ/projectz.git"]],
+        // "Credential":"projectz_ssh",
+        "Branches":[["name":"origin/${params.projectf}"]],
+        "UserRemoteConfigs":[["url": "ssh://git@192.168.5.35:4422/projectf/projectf.git"]],
+        "Submodule":true,
+        "Credential":"build_fm_ssh",
+        "UserExclusion":"""|Z_Agent
+            |z_agent
+            |Z_Agent@blackjack-inc.com
+        """.stripMargin(),
+        "Submodule":true,
+        SkippedSubmodules:[
+            "Submodules/Server"
+        ],
+        // ClientUploadFTP:[
+        //     "192.168.8.137":"/ProjectH/DailyBuild/${env.BUILD_NUMBER}_${params.versionPrefix}"
+        // ],
+        // ClientUploadFTPCred:"192.168.8.137H",
+        DiskSpaceCheck:[
+            "androidbuildnode":[["D","100GB"]]
+        ],
+        "GameConfig":[
+            "5.43":["gameClientSettings\\projectZ\\GameConfig\\5.43.txt":"Assets\\StreamingAssets\\Config\\GameConfig.txt"],
+            "AliCloud":["gameClientSettings\\projectZ\\GameConfig\\AliCloud.txt":"Assets\\StreamingAssets\\Config\\GameConfig.txt"],
+        ],
+        // "GameClientSetting":[
+        //     "${ProjectPathClient}/Assets/GameProject/Resources/GameClientSetting.asset":["AssetBundleDownloadUrlRoot.*":"AssetBundleDownloadUrlRoot: ${params.AssetBundleDownloadUrlRoot}/{params.versionPrefix}"]
+        // ],
+        Poco:[
+            "gameClientSettings\\projectZ\\Poco.GameEntry.unity":"${ProjectPathClient}\\Assets\\GameProject\\Resources\\GameEntry.unity"
+        ],
+        Uwagot:[
+            "gameClientSettings\\projectZ\\UWA.GameEntry.unity":"${ProjectPathClient}\\Assets\\GameProject\\Resources\\GameEntry.unity"
+        ],
+        UnityErrorCheck:[
+            "error, Check log Path",
+            "Build AssetBunlde Error",
+            "Build Package Error",
+            "CheckBundleDirs Error",
+            "Compilation failed: \\d+ error",
+            "BuildFailedException"
+        ],
+        ClientUploadFTP:[
+            "192.168.7.108":"/ProjectZ/FullBuild/${params.versionPrefix}_${env.BUILD_NUMBER}"
+        ],
+        ClientUploadFTPCred:"zjx_Ftp",
+        "EnvironmentParams":[
+            "ELKURL":"http://192.168.5.100:9200/projectz/_doc",
+            "DingRobot":"e968a20b-5d47-4569-b093-aaed18554ae6",
+            "Options":"${params.Option}",
+            "MailTo":"zengjianxiong@blackjack-inc.com",
+            "LinkScript":"Link_ProjectZ.bat",
+            "RootWin":RootWin,
+            "RootAndroid":RootAndroid,
+            "BuildId":BuildId,
+            "UnityPathWin":"E:\\BE\\Soft-backjack\\Unity\\Unity-2019.4.31f1\\Editor\\Unity.exe",
+            "UnityPathAndroid":"E:\\BE\\Soft-backjack\\Unity\\Unity-2019.4.31f1\\Editor\\Unity.exe",
+            "WinName":"Z.exe",
+            "ProductName":"Z", // used for iOS ipa output name
+            "PackageName":"Z_${env.BUILD_NUMBER}_${Region}_${params.versionPrefix}_${currentTime}",
+            "ApkName":"Z_${Region}_${params.versionPrefix}_${currentTime}_${env.BUILD_NUMBER}.apk",
+            "IOSProjectName":"Z_${params.versionPrefix}",
+            "IOSName":"Z_${Region}_${params.versionPrefix}_{Discipline}_${currentTime}_${env.BUILD_NUMBER}.ipa", //
+            "ProjectPathClient":ProjectPathClient,
+            "ResaveFolder":"${ProjectPathClient}/Resave",
+            "OutputShare":"\\\\192.168.7.108\\zjx_testZ\\${BuildId}",
+            "OutputShareAB":"UpdateClientData",
+            "OutputShareServer":"Server",
+            "OutputShareClient":"Client",       
+            "OutputFolderRoot":"Output",
+            "ExecBuildWin":"BuildTrigger.BuildStandalone",
+            "ExecBuildAndroid":"BuildTrigger.BuildAndroid",
+            "ExecBuildIOS":"BuildTrigger.BuildIOS",
+            "MacBuildAccount":"192.168.1.239",
+            "ExecBuildABWin":"BuildTrigger.BuildWindowsAssetBundle",
+            "ExecBuildABAndroid":"BuildTrigger.BuildAndroidAssetBundle",
+            "ExecBuildABIOS":"BuildTrigger.BuildIosAssetBundle",
+            "ExecClientSyncExcelConf":"BlackJack.BJFramework.Build.ConfigDataBuilder.BuildAllConfigData",
+            "ExecClientSyncCommonCode":"BlackJack.BJFramework.Build.ProjectManager.ImportOutSideCommonCode",
+        ]
+    ]
+)

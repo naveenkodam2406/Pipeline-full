@@ -1,0 +1,59 @@
+{
+    "ConcurrentBuild": false,
+    "ChoiceParams":{
+        "version":["release","debug","development"]
+    },
+    "StringParams":{
+        "versionCode":["1.0.1",""],
+        "bundleVersionStep":["1",""],
+        "Option":["zhengbao#1 cleanABFolder#0", "Unity Build Options"]
+    },
+    "FileParams":{
+        "BundleDataAndroid.asset":"使用指定的BundleDataAndroid.asset文件来进行热更新",
+        "BundleDataiOS.asset":"使用指定的BundleDataiOS.asset文件来进行热更新",
+        "BundleDataStandaloneWindows64.asset":"使用指定的使用指定的BundleDataStandaloneWindows64.asset文件来进行热更新"
+    },
+    "StageSelector":["GitPull","Windows","Android","IOS","Release"],
+        "BooleanParamsWithDesc":{
+            "forceupdate":["true","强制热更,勾上后forceupdate#1 强制更新 ，否则forceupdate#0 非强制更新, 默认是勾上"],
+            "copyResave":["false",""],
+            "useSDK":["true",""],
+            "disableDownloadAB":["false","关闭下载ab"],
+            "BuildClient":["true","是否编译应用包安装包"],
+            "JustBuildAB":["false","仅仅只打包上传AB 包"],
+            "UpdateHoxfix":["true","更新AB包热更测试路径"],
+            "BuildServer":["true","是否编译服务器包"],
+            "UploadServer":["true","是否更新ZiLong整包服务器"]
+        },
+    "Jobs": {
+        "A_CN": {
+            "Desc":"<b>此Job只打奇数版本，当前 ob9_zhengbao </b><br/>\n<b>整包输出路径</b>: \\\\192.168.5.107\\U_ZiLong\\All-Platform<br/>\n<b>热更测试路径</b>:\\\\192.168.5.107\\Project_ZiLong\\U.CN.ZiLong.B<br/>\n<h4><a href=\"http://192.168.5.25:8090/pages/viewpage.action?pageId=52625467\">U.CN.ZiLong.B 打包须知</a>",
+            "JenkinsScript": "ProjectU/ParallelBuild_Daily_Even_CN",
+            "Name": "U.CN.SandBox.B",
+            "StringParams":{
+                "versionPrefix":["OB9","请输入版本号前缀 目前版本号格式为：ProjectU_${versionPrefix}_${Date}"]
+            },
+            "ChoiceParams":{
+                "UpdateServerTag":{"Items":["ZiLongOB_Temp"],
+                    "Desc":"需要更新的服务器，说明如下：<br />ZiLongOB_Temp:外网紫龙OB9服"}
+            },
+            "GitParams":{
+                "framework":{
+                    "defaultValue":"ob9_zhengbao",
+                    "useRepository":".*framework.git",
+                    "quickFilterEnabled":"true"
+                },
+                "projectu":{
+                    "defaultValue":"ob9_zhengbao",
+                    "useRepository":".*projectu.git",
+                    "quickFilterEnabled":"true"
+                },
+                "server":{
+                    "defaultValue":"ob9_zhengbao",
+                    "useRepository":".*server.git",
+                    "quickFilterEnabled":"true"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"StatusTool_test",
+            "JenkinsScript": "Sandbox/StatusToolTest.jenkinsfile",
+            "StringParams":{      
+                "agenthost":["192.168.5.101","select a agent host"]             
+            }
+            
+        }
+    }
+}

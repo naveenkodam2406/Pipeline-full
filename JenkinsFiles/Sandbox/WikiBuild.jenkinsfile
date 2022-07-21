@@ -1,0 +1,21 @@
+@Library("Sandbox")_
+import lib.Utility
+def currentTime = Utility.GetCurrentDate("yyyyMMddHHmm")
+def BuildId = "${params.versionPrefix}_${currentTime}_${env.BUILD_NUMBER}"
+WikiBuild([
+    "AssignedLabel":"192.168.8.136",
+    "Branches":[["name":"origin/${params.Branch}"]],
+    "UserRemoteConfigs":[["url": "git@192.168.5.23:TaT/Tools/projectmanager/atlassian-confluence-6.15.4.git"]],
+    "Credential":"GitExtensions_Build",
+    "Rootpath":"D:\\wiki_webapp\\wiki\\atlassian-confluence-6.15.4",
+    "EnvironmentParams":[
+        "DingRobot":"e968a20b-5d47-4569-b093-aaed18554ae6",
+        "MailTo":"zengjianxiong@blackjack-inc.com",
+        "wikibuild":"build.bat",
+        "ELKURL":"http://192.168.5.100:9200/wikibuildlist/_doc",
+        "ProductionPath":"confluence-project\\confluence-core\\confluence-webapp\\target",
+        "OutputPath":"D:\\WikiOutput",
+        "BuildId":BuildId,
+        "RemoteOutputPath" :"D:/WikiWebapp/webapps"
+    ],
+])

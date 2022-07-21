@@ -1,0 +1,12 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"GitExtensionTest_job",
+            "JenkinsScript": "Sandbox/GitExtensionTest.jenkinsfile",
+            "StringParams":{      
+                "agenthost":["192.168.5.101","select a agent host"]             
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"Seed.Sandbox.Jobs",
+            "JenkinsScript": "SandboxProjectSeed.groovy",
+            "StringParams":{
+                "ConfigFile":["","Example1.json or HelloWorld.json"]
+            }
+        }
+    }
+}

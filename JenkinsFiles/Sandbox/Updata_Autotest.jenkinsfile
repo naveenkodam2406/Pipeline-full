@@ -1,0 +1,5 @@
+@Library('Sandbox') _
+Updata_Autotest([
+    "192.168.7.27":"D:\\autotest\\autotest\\autotest",
+    "192.168.7.120":"D:\\testautotest\\autotest\\autotest",
+])

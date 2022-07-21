@@ -1,0 +1,11 @@
+{
+    "ConcurrentBuild": false,
+    
+    "Jobs": {        
+        "WikiBuild": {
+            "JenkinsScript": "Sandbox/WikiDeploy.jenkinsfile",
+            "Name": "WikiDeployWebappp",
+            "Desc":"Wiki  deployment"
+        }
+    }
+}

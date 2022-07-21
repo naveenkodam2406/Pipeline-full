@@ -1,0 +1,14 @@
+{
+    "ConcurrentBuild": false,
+    "ChoiceParams":{
+        "version":["debug","development","release"],
+        "AssetBundleDownloadUrlRoot":{"Items":
+            ["http://8.136.213.114:8080/Files/ProjectFM/Daily","http://192.168.1.87:8080/Files/ProjectFM/Daily"],
+            "Desc":"最终地址：${AssetBundleDownloadUrlRoot}/{params.versionPrefix}<br />或 ${AssetBundleDownloadUrlRoot}/${BUILD_NUMBER}"
+            }
+        },
+    "StringParams":{
+        "Option":["versionCode#1.0.1 Sdk#0 AbDownload#0 useAB#1 closeGMMenu#0 Gradle#1 bundleVersionStep#1 IL2CPP#1", "Unity Build Options"]
+        
+    }
+}

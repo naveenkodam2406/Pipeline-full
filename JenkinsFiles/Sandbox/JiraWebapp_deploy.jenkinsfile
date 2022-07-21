@@ -1,0 +1,13 @@
+@Library('Sandbox') _
+JiraWebapp_deploy([
+    "buildAgent":"192.168.5.57",
+    "buildRoot":"D:\\JiraWebapp",
+    "JiraAppPath":"D:\\Program Files\\Atlassian\\JIRA\\atlassian-jira",D:\Program Files\Atlassian\JIRA\lib
+    "JiraDatabasePath":"D:\\Program Files\\Atlassian\\Application Data\\JIRA",
+    "gitargs":[
+        "Branches":[["name":"origin/main"]],
+        "UserRemoteConfigs":[["url": "http://192.168.5.23:8090/yangzhuomou/jira_resouce_project.git"]],
+        "LocalBranch":"main",
+        "Credential":"jirawebapp_git",
+        ],
+    ])

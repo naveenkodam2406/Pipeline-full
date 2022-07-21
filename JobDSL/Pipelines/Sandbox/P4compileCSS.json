@@ -1,0 +1,12 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"P4compileCSS",
+            "JenkinsScript": "Sandbox/P4compileCSS.jenkinsfile",
+            "StringParams":{
+                "slaveIP":["192.168.7.120","执行CI节点"],
+                "Workspace_path":["e:\\P4Example","节点上的CI执行路径"]
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+ServerSettingUrl = http://47.97.40.241:20079/Trunk/ServerSetting.txt

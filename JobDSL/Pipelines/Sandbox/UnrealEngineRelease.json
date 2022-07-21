@@ -1,0 +1,16 @@
+{
+    "ConcurrentBuild": false,
+    
+    "Jobs": {
+        "UnrealEngineRelease": {
+            "JenkinsScript": "Sandbox/UnrealEngineRelease.jenkinsfile",
+            "Name": "UnrealEngineRelease",
+            "Scm":"",
+            "Desc":"",
+            "StageSelector":["SvnCommit:false","WikiCommit:false","GitPull","Build:false"],
+            "StringParams":{
+                "Tag":["UE5_Build_Version_1.0.18_1","当前tag,测试使用"]
+            }
+        }
+    }
+}

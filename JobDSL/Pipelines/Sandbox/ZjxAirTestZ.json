@@ -1,0 +1,29 @@
+{
+    "ConcurrentBuild": false,
+    
+    "Jobs": {
+        "AirTest": {
+            "JenkinsScript": "Sandbox/ZjxAirTestZ.jenkinsfile",
+            "Name": "ZjxAirTestZ",
+            "Scm":"H 9 * * *",
+            "Desc":"Current Branch ProjectZ/PBT1",
+            "StageSelector":["GitPull"],
+            "StringParams":{
+                "versionPrefix":["AirTest","请输入版本号前缀 目前版本号格式为：ProjectFM_${versionPrefix}_${Date}"],
+                "Option":["version#development versionCode#1.0.1 UseAb#1 AbDownload#1 Gradle#1 IL2CPP#1 AndroidAAB#0 HotFix#0", "Unity Build Options"]
+            },
+            "ChoiceParams":{
+                "GameConfig":{"Items":
+                    ["AliCloud","5.43"],
+                    "Desc":"连接的服务器信息, 说明如下:<br>AliCloud: 47.97.40.241, <br />5.43: 192.168.5.43"},
+                "Profiler":{"Items":
+                    ["Poco","Uwagot"],
+                    "Desc":"uwagot: (uwaGot + airtest), in il2cpp mode,\"control by poco\",this tag does not work. eg. level frame rate..<br />poco:(airtest), eg. Game Testing"
+                }
+            },
+            "FileParams":{
+                "BundleDataAndroid.asset":"使用指定的BundleDataAndroid.asset文件来进行热更新"
+            }
+        }
+    }
+}

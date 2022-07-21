@@ -1,0 +1,40 @@
+@Library('Sandbox') _
+import lib.Utility
+def SVNRootWin="E:\\danTest_CICD\\H.Daily"
+def currentTime = Utility.GetCurrentDate("yyyyMMdd")
+def BuildId = "Z_${params.versionPrefix}_${currentTime}_${env.BUILD_NUMBER}"
+ProjectHSlimR(
+    [    
+
+
+        "RemoteURL":"http://192.168.5.56/svn/htest",
+        "Credential":"build_h",
+        "AssignedLabel":"192.168.8.143",
+        "AssignedLabel_Win":"192.168.8.143",
+        "AssignedLabel_Android":"192.168.8.143",
+        UnityErrorCheck:[
+            "error, Check log Path",
+            "Build AssetBunlde Error",
+            "Build Package Error",
+            "CheckBundleDirs Error",
+            "Compilation failed: \\d+ error",
+            "BuildFailedException"
+        ],
+        
+        "EnvironmentParams":[
+            "MailTo":"zengjianxiong@blackjack-inc.com",
+            "ELKURL":"http://192.168.5.100:9200/projecth/_doc",
+            "DingRobot":"",
+            "Options":"version#${params.version} versionCode#${params.VersionCode} ${params.Option}",
+            "UnityPathWin":"",
+            "ExecBuildWin":"BuildTrigger.BuildStandalone",
+            "ExecBuildAndroid":"BuildTrigger.BuildApk",
+            "ExecBuildABWin":"BuildTrigger.BuildWindowsAssetBundle",
+            "ExecBuildABAndroid":"BuildTrigger.BuildAndroidAssetBundle",
+            "BuildId":BuildId,
+            "SVNRootWin":SVNRootWin,           
+            "OutputShare":"\\\\192.168.7.108\\zjx_testZ\\${BuildId}"
+
+        ]
+    ]
+)

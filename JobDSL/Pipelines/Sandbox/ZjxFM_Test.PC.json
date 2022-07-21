@@ -1,0 +1,46 @@
+{
+    "import":["Pipelines/Sandbox/FMGeneral.json"],
+    "FileParams":{
+        "BundleDataAndroid.asset":"使用指定的BundleDataAndroid.asset文件来进行热更新"
+    },
+    "ChoiceParams":{
+        "AssetBundleDownloadUrlRoot":{"Items":
+            ["\\\\192.168.7.108\\zjx_testZ"],
+            "Desc":"最终地址：${AssetBundleDownloadUrlRoot}/{params.versionPrefix}<br />或 ${AssetBundleDownloadUrlRoot}/${BUILD_NUMBER}"
+            },
+            "Profiler":{"Items":
+                ["Poco","Uwagot.Auto","Uwagot.Manual"],
+                "Desc":""
+            },
+            "Platform":{"Items":
+                ["Windows","Android"],
+                "Desc":"Platform"
+            }
+        },
+    "StringParams":{
+        "Option":["version#development versionCode#1.0.1 uwa#1 Sdk#0 AbDownload#0 useAB#1 closeGMMenu#0 Gradle#1 bundleVersionStep#1 IL2CPP#1", "Unity Build Options<br> Android always goes with the following code: env.Options.replace(\"AbDownload#0\",\"AbDownload#1\").replace(\"useAB#0\",\"useAB#1\")"]
+    },
+    
+    "StageSelector":["GitPull"],
+        "BooleanParamsWithDesc":{
+            "BuildClient":["true","是否编译应用包安装包"],
+            "BuildNumberForDLC":["false","true: 下载包的地址以构建号码结尾来区分每一个版本, 默认保留前30个<br />false: 下载包的地址以versionPrefix参数的值结尾，达到热更的目的"]
+        },
+    "Jobs": {
+        "Develop_CN": {
+            "GitParams":{
+                "projectf":{
+                    "defaultValue":"ProjectF/develop",
+                    "useRepository":".*projectf.git",
+                    "quickFilterEnabled":"true"
+                }
+            },
+            "Desc":"Slave: 192.168.7.108<br />Window Test",
+            "JenkinsScript": "Sandbox/ZjxFM_Test.PC.jenkinsfile",
+            "Name": "ZjxFM.AirTest.PC",
+            "StringParams":{
+                "versionPrefix":["AirTestPC","请输入版本号前缀 目前版本号格式为：ProjectFM_${versionPrefix}_${Date}"]
+            }
+        }
+    }
+}

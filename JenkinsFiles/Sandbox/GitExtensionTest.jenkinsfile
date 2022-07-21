@@ -1,0 +1,7 @@
+@Library('Sandbox') _
+GitExtensionTest([
+    Branches:[["name":"origin/Users/zengjianxiong/develop"]],
+    UserRemoteConfigs:[["url": "http://192.168.5.23:8090/BuildEngineer/Git/GitExtensions.git"]],
+    LocalBranch:"Users/zengjianxiong/develop",
+    "Credential":"GitExtensions_Build",
+])

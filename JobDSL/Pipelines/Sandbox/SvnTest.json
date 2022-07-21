@@ -1,0 +1,15 @@
+{
+    "ConcurrentBuild": true,
+    "Jobs":{       
+        "MasterProjectSeed":{
+            "Name":"SVN_TEST",
+            "JenkinsScript": "Sandbox/SvnTest.jenkinsfile",
+            "StringParams":{      
+                "number":["","一台机器上的并发数"],
+                "agenthost":["","select a agent host"]
+
+            }
+            
+        }
+    }
+}

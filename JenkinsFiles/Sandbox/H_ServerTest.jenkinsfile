@@ -1,0 +1,42 @@
+@Library('SharedLibrary@projectH') _
+import lib.Utility
+
+def RootServer= "D:\\JenkinsPipeline\\H.Server.Dev"
+
+def currentTime = Utility.GetCurrentDate("yyyyMMdd")
+def BuildId = "H_${currentTime}_${env.BUILD_NUMBER}"
+def Region = "CN"
+ProjectHServerR(
+    [
+        "RemoteURL":"http://192.168.5.59/svn/GameProjectH/trunk",
+        "RelativeTargetDir":"trunk",
+        "Credential":"build_h",
+        "AssignedLabel":"192.168.8.143",
+        "AssignedLabel_Server":"192.168.8.143",
+
+        ClientUploadFTP:[
+            "192.168.8.137":"/ProjectH/DailyBuild/${env.BUILD_NUMBER}_Server_${params.version}"
+        ],
+        ClientUploadFTPCred:"192.168.8.137H",
+        ServerUploadFTP:"gameServerSettings\\projectH\\serverTag.json",
+        "EnvironmentParams":[
+            "ELKURL":"http://192.168.5.100:9200/projecth/_doc",
+            "DingRobot":"5290f7d6-5be7-4520-892b-86eb4708c2fb",
+            "MailTo":"zengjianxiong@blackjack-inc.com",
+            "Region":Region,
+            "LinkScriptWS":"trunk\\Tools\\WWise环境部署",
+            "LinkScript":"UseWwiseInProject.bat",
+            "RootServer":RootServer,
+            "BuildId":BuildId,
+            "PackageName":"H_${params.version}_${Region}_${currentTime}_${env.BUILD_NUMBER}",
+            "ServerSln":"trunk\\Server\\ProjectH.sln",
+            "Debug.ServerBuildOpt":""" /p:Configuration="Debug" /p:Platform="AnyCPU"  """,
+            "Debug.ServerRelease":"pack_server_debug.bat",
+            "Release.ServerBuildOpt":""" /p:Configuration="Release" /p:Platform="AnyCPU"  """,
+            "Release.ServerRelease":"pack_server_release.bat",
+            "MSBuild":""" "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe" """,
+            "OutputShareServer":"Server",
+            "OutputFolderRoot":"Output",
+        ],
+    ]
+)

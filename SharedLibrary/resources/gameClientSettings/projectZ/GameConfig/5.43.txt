@@ -1,0 +1,1 @@
+ServerSettingUrl = http://192.168.5.43:8081/Trunk/ServerSetting.txt

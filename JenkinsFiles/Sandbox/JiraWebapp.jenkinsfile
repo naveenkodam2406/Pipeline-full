@@ -1,0 +1,12 @@
+@Library('Sandbox') _
+JiraWebapp([
+    "buildAgent":"192.168.8.136",
+    "buildRoot":"D:\\jira_webapp",
+    "TargetRoot":"D:\\JiraOutPut",
+    "gitargs":[
+        "Branches":[["name":"origin/Dev"]],
+        "UserRemoteConfigs":[["url": "http://192.168.5.23:8090/TaT/Tools/projectmanager/blackjack_jira"]],
+        "LocalBranch":"Dev",
+        "Credential":"jirawebapp_git",
+        ],
+    ])

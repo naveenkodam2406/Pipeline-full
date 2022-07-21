@@ -1,0 +1,38 @@
+{
+    "ConcurrentBuild": false,
+    
+    "Jobs": {
+        "AirTest": {
+            "JenkinsScript": "Sandbox/Z.AirTest_H.jenkinsfile",
+            "Name": "Example.AirTest_H",
+            "Desc":"Current Branch ProjectZ/PBT1",
+            "StageSelector":["GitPull","Android","Windows"],
+            "StringParams":{
+                "versionPrefix":["Test",""],
+                "AndroidBundleVersionCode":["1","安卓Bundle版本号"],
+                "VersionCode":["1.0.1 ","版本号"],
+                "Option":["UseAb#1 AbDownload#1 Sdk#0 Gradle#1 IL2CPP#1 HotFix#1 AndroidPublishFormat#Apk", "Unity Build Options"]
+            },
+            "ChoiceParams":{
+                "version":["release","debug","development"],
+                "GameConfig":{"Items":
+                    ["AliCloud","5.43"],
+                    "Desc":""},
+                "Profiler":{"Items":
+                    ["Poco","Uwagot"],
+                    "Desc":"uwagot: (uwaGot + airtest), in il2cpp mode,\"control by poco\",this tag does not work. eg. level frame rate..<br />poco:(airtest), eg. Game Testing"
+                }
+            },
+            "FileParams":{
+                "BundleDataAndroid.asset":"使用指定的BundleDataAndroid.asset文件来进行热更新",
+                "BundleDataStandaloneWindows64.asset":"使用指定的使用指定的BundleDataStandaloneWindows64.asset文件来进行热更新"
+            },
+            "BooleanParamsWithDesc":{
+                "ExcelConfAnalys":["false","更新配置文件并提交"],
+                "BuildClient":["true","是否编译应用包安装包"],
+                "JustBuildAB":["false",""],
+                "UploadServer":["false","是否更新服务器"]
+            }
+        }
+    }
+}

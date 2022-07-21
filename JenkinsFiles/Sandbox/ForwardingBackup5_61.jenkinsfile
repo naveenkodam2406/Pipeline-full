@@ -1,0 +1,9 @@
+@Library('SharedLibrary@BE') _
+ForwardingBackup5_61([
+    "ForwardingAgent": "192.168.5.62",
+    "MasterAgent": "192.168.5.61",
+    "P4FRServerOnFR": "/P4FRService",
+    "BackupPathOnFR": "/FWBackup",
+    "P4MasterServer": "/P4Service",
+    "BackupPathOnMaster": "/MasterBackup"
+    ])

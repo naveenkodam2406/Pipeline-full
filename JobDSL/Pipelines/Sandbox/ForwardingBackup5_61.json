@@ -1,0 +1,8 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"ForwardingBackup5_61",
+            "JenkinsScript": "Sandbox/ForwardingBackup5_61.jenkinsfile"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@Library('SharedLibrary@sandbox') _
+
+
+P4PrecachePipeline([
+  "AssignedLabel":"172.16.5.13",
+  "Changelog": false,
+  "Poll": false,
+  "WorkspaceClass": "ManualWorkspaceImpl",
+  "WorkspaceNameFormat": "precache-{NODE_NAME}",
+  "Credential": "172.16.5.13proxy_login",
+  "Populate": "CheckOnlyImpl",
+  "ClientSpec": """//GameProjectH/ProjectH_trunk/... //{PLACEHOLDER}/GameProjectH/ProjectH_trunk/...
+  //FrameworkH/BJFramework_trunk/... //{PLACEHOLDER}/FrameworkH/BJFramework_trunk/...""",
+
+])

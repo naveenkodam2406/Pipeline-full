@@ -1,0 +1,8 @@
+{
+"Jobs":{
+    "MasterProjectSeed":{
+        "Name":"Sandbox.Example.P4Precache",
+        "JenkinsScript": "Sandbox/P4Precache.jenkinsfile"
+    }
+}
+}

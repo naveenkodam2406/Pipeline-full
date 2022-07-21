@@ -1,0 +1,28 @@
+{
+    "ConcurrentBuild": false,
+    
+    "Jobs": {        
+        "Daily": {
+            "JenkinsScript": "Sandbox/H_Daily.jenkinsfile",
+            "Name": "H.Daily",
+            "Desc":"ProjectH/develop -- 每日出包，或手动打包需求",
+            "StageSelector":["GitPull","Android"],
+           
+            "ChoiceParams":{
+                "version":["debug","release","development"]
+            },
+            "StringParams":{
+                "versionPrefix":["Dev","请输入版本号前缀 目前版本号格式为: H_${versionPrefix}"],
+                "VersionCode":["1.0.1 ","版本号"],
+                "Option":["UseAb#1 AbDownload#0 Gradle#1 IL2CPP#1 Sdk#0 HotFix#0 AndroidApk#1", "Unity Build Options"]
+            },          
+            "BooleanParamsWithDesc":{
+                "ExcelConfAnalys":["true","更新配置文件并提交"],
+                "BuildClient":["true","是否编译应用包安装包"],
+                "UpdateHoxfix":["true","更新AB包热更测试路径"],
+                "BuildServer":["true","是否编译服务器包"],
+                "UploadServer":["true","是否更新DEV服务器"]
+            }
+        }
+    }
+}

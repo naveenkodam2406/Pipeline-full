@@ -1,0 +1,12 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"Updata_Autotest",
+            "JenkinsScript": "Sandbox/Updata_Autotest.jenkinsfile",
+            "StringParams":{
+                "slaveIP":["","将要执行的slave"],
+                "Timeshedule":["","将要自动更新的日期时间"]
+            }
+        }
+    }
+} 

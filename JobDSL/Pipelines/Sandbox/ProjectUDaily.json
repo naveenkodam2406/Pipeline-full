@@ -1,0 +1,48 @@
+{
+    "ConcurrentBuild": false,
+    "ChoiceParams":{
+        "version":["debug","development","release"]
+    },
+    "StageSelector":["GitPull","BuildServer","Release"],
+        "BooleanParamsWithDesc":{
+            "BuildClient":["false","是否编译应用包安装包"]
+        },
+    "Jobs": {
+        "Develop_CN": {
+            "Desc":"To Test XCode13",
+            "JenkinsScript": "ProjectU/ParallelBuild_Daily_Even_CN",
+            "Name": "ProjectU.Daily.XTest",
+            "StringParams":{
+                "versionPrefix":["DanTest","请输入版本号前缀 目前版本号格式为：ProjectU_${versionPrefix}_${Date}"],
+                "Option":["versionCode#1.0.1 useSDK#1 disableDownloadAB#1 disableAB#0 closeGMMenu#0 Gradle#1 copyResave#0 bundleVersionStep#1 cleanABFolder#0 il2cpp#1", "Unity Build Options"]
+            }
+        },
+        "U2": {
+            "Desc":"To Test XCode13",
+            "JenkinsScript": "ProjectU/ParallelBuild_Full_Odd_TW",
+            "Name": "ProjectU2.Daily.XTest",
+            "StringParams":{
+                "versionPrefix":["dailybuild","请输入版本号"],
+                "Option":["versionCode#1.0.1 useSDK#1 disableDownloadAB#1 disableAB#0 closeGMMenu#0 Gradle#1 copyResave#0 bundleVersionStep#1 cleanABFolder#0 il2cpp#1", "默认打包参数，可以手动修改控制"]
+            },
+            "GitParams":{
+                "framework":{
+                    "defaultValue":"develop",
+                    "useRepository":".*BJFramework.git",
+                    "quickFilterEnabled":"true"
+                },
+                "projectu":{
+                    "defaultValue":"develop",
+                    "useRepository":".*GameProject.git",
+                    "quickFilterEnabled":"true"
+                },
+                "server":{
+                    "defaultValue":"develop",
+                    "useRepository":".*Server.git",
+                    "quickFilterEnabled":"true"
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "ConcurrentBuild": false,
+    "Jobs":{
+        "ServerBuild": {
+            "Desc":"Slave: 192.168.8.143<br/>Workspace: D:\\JenkinsPipeline\\H.Server.Dev",
+            "JenkinsScript": "Sandbox/H_ServerTest.jenkinsfile",
+            "Name": "H.ServerTest",
+            "Cron":"H 5 * * *",
+            "StageSelector":["SVNPull","UploadServer","BuildServer"],
+            "ChoiceParams":{
+                "version":["Release","Debug"],
+                "UpdateServerTag":{"Items":
+                    ["Daily","Dev"],
+                    "Desc":"需要更新的服务器，说明如下:<br>Dev:192.168.8.143:/Archive/Dev<br/>Daily:192.168.8.56:/Archive/Daily"}
+            }
+        }
+    }
+}

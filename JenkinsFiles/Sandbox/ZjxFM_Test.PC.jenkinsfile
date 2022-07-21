@@ -1,0 +1,90 @@
+@Library('Sandbox') _
+
+// hybrid ndk env required: android-ndk-r19 with r21d llvm folder
+// set UNITY_IL2CPP_ANDROID_USE_LLD_LINKER=1
+import lib.Utility
+def GitRootPoco = "D:\\JenkinsPipeline\\ZjxFM.AirTest.PC"
+def GitRootUwa = "D:\\JenkinsPipeline\\ZjxFM.AirTest.PC"
+def ProjectPathClient = "GameProject/Client/TargetProject"
+
+def currentTime = Utility.GetCurrentDate("yyyyMMdd")
+def BuildId = "${env.BUILD_NUMBER}_ProjectFM_${params.versionPrefix}_${currentTime}"
+def Region = "CN"
+ZjxProjectFMTest(
+    [
+        Branches:[["name":"origin/${params.projectf}"]],
+        "UserRemoteConfigs":[["url": "ssh://git@192.168.5.35:4422/projectf/projectf.git"]],
+        "Submodule":true,
+        SkippedSubmodules:[
+            "Submodules/Audio",
+            "Submodules/blackjack-shader-library",
+            "Submodules/blackjack-SRP",
+            "Submodules/blackjack-base",
+            "Submodules/Server"
+        ],
+        "GameClientSetting":[
+            "${ProjectPathClient}/Assets/GameProject/Resources/GameClientSetting.asset":["AssetBundleDownloadUrlRoot.*":"AssetBundleDownloadUrlRoot: ${params.AssetBundleDownloadUrlRoot}/{params.versionPrefix}"]
+        ],
+        Poco:[
+            "gameClientSettings\\projectFM\\Poco.ZjxGameEntry.unity":"${ProjectPathClient}\\Assets\\GameProject\\Resources\\GameEntry.unity"
+        ],
+        "Uwagot.Auto":[
+            "gameClientSettings\\projectFM\\UWA_AutoGameEntry.unity":"${ProjectPathClient}\\Assets\\GameProject\\Resources\\GameEntry.unity"
+        ],
+        "Uwagot.Manual":[
+            "gameClientSettings\\projectFM\\UWA_ManualGameEntry.unity":"${ProjectPathClient}\\Assets\\GameProject\\Resources\\GameEntry.unity"
+        ],
+        AbServerUploadFTP:"gameServerSettings\\projectFM\\abServerTag.json",
+        "Credential":"build_fm_ssh",
+        "AssignedLabel":"192.168.7.108",
+        "AssignedLabel_Win":"192.168.7.108",
+        "AssignedLabel_Android":"192.168.7.108",
+        UnityErrorCheck:[
+            "error, Check log Path",
+            "Build AssetBunlde Error",
+            "Build Package Error",
+            "CheckBundleDirs Error",
+            "Compilation failed: \\d+ error",
+            "BuildFailedException"
+        ],
+        
+        "EnvironmentParams":[
+            "LLVM19":"C:\\android-ndk-r19\\llvm.19",
+            "LLVM21":"C:\\android-ndk-r19\\llvm.21d",
+            "LLVM":"C:\\android-ndk-r19\\toolchains\\llvm",
+            "ELKURL":"http://192.168.5.100:9200/projectfm/_doc",
+            "DingRobot":"e968a20b-5d47-4569-b093-aaed18554ae6",
+            "MailTo":"zengjianxiong@blackjack-inc.com",
+            "Options":"${params.Option}",
+            "Region":Region,
+            "LinkScriptWS":"GameProject",
+            "LinkScript":"LinkSubmodule.bat",
+            "GitRootPoco":GitRootPoco,
+            "GitRootUwa":GitRootUwa,
+            "BuildId":BuildId,
+            "WinName":"FrontMission.exe",
+            "ServerSln":"Server\\ProjectF.sln",
+            "ServerBuildOpt":""" /rebuild "Debug|AnyCPU"  """,
+            "ProductName":"FM_${env.BUILD_NUMBER}_${Region}_${params.versionPrefix}_${currentTime}", // used for iOS ipa output name //FrontMission
+            "PackageName":"FM_${env.BUILD_NUMBER}_${Region}_${params.versionPrefix}_${currentTime}",
+            "ApkName":"FM_${Region}_${params.versionPrefix}_${currentTime}_${env.BUILD_NUMBER}.apk",
+            "IOSProjectName":"FM_${params.versionPrefix}",
+            "IOSName":"FM_${Region}_${params.versionPrefix}_{Discipline}_${currentTime}_${env.BUILD_NUMBER}.ipa", //
+            "UnityPathWin":"E:\\BE\\Soft-backjack\\Unity\\Unity-2019.4.31f1\\Editor\\Unity.exe",
+            "UnityPathIOS":"/Applications/Unity/Unity.app/Contents/MacOS/Unity",
+            "UnityPathAndroid":"E:\\BE\\Soft-backjack\\Unity\\Unity-2019.4.31f1\\Editor\\Unity.exe",
+            "OutputShare":"\\\\192.168.7.108\\zjx_testZ\\fm_test\\${BuildId}",
+            "UploadABFolder":"${params.versionPrefix}",
+            "UploadAB":"\\\\192.168.7.108\\zjx_testZ\\Files\\ProjectFM\\Test",
+            "OutputShareAB":"UpdateClientData",
+            "OutputShareClient":"Client",
+            "OutputFolderRoot":"Output",
+            "ProjectPathClient":ProjectPathClient,
+            "ResaveFolder":"${ProjectPathClient}/Assets/StreamingAssets/Resave",
+            "ExecBuildWin":"BuildTrigger.BuildStandalone",
+            "ExecBuildAndroid":"BuildTrigger.BuildApk",
+            "ExecBuildABWin":"BuildTrigger.BuildWindowsAssetBundle",
+            "ExecBuildABAndroid":"BuildTrigger.BuildAndroidAssetBundle",
+        ]
+    ]
+)

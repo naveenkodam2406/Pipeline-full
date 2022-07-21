@@ -1,0 +1,14 @@
+@Library("Sandbox")_
+
+WikiDeploy([
+    "AssignedLabel":"192.168.5.57",
+    "Credential":"wiki_pull",
+    "Rootpath":"D:\\WikiWebapp\\webapps\\wikibuild",
+    "EnvironmentParams":[
+        "DingRobot":"e968a20b-5d47-4569-b093-aaed18554ae6",
+        "MailTo":"zengjianxiong@blackjack-inc.com",
+        "wikibuild":"build.bat",
+        "ProductionPath":"confluence-project\\confluence-core\\confluence-webapp\\target\\confluence",
+        "DeployPath":"D:\\Program Files\\Atlassian\\Confluence"
+    ],
+])

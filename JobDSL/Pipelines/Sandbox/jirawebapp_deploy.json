@@ -1,0 +1,8 @@
+{
+    "Jobs":{
+        "MasterProjectSeed":{
+            "Name":"JiraWebapp_deploy",
+            "JenkinsScript": "Sandbox/JiraWebapp_deploy.jenkinsfile"
+        }
+    }
+}

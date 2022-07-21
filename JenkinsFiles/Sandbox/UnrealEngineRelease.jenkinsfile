@@ -1,0 +1,58 @@
+@Library("Sandbox")_
+import lib.Utility
+// job_name = os.getenv("JOB_NAME")
+// workspace_path = os.getenv('WORKSPACE')
+// buildID = os.getenv('BUILD_NUMBER')
+
+
+def Rootpath = "E:\\JenkinsPipeline\\UnrealEngine_Release\\UnrealEngine"
+def SvnPath = "E:\\JenkinsPipeline\\UnrealEngine_Release_SVN"
+def ProjectPathClient = "Engine\\Build\\BatchFiles\\RunUAT"
+UnrealEngineRelease(
+    [
+         MultiScm:[
+            [
+                Branches:[["name":params.Tag]],
+                UserRemoteConfigs:[["url": "http://192.168.5.23:8090/TaT/Tools/unreal/UnrealEngine.git"]],
+            ],
+
+            [
+                Branches:[["name":"master"]],
+                UserRemoteConfigs:[["url": "git@192.168.5.23:TaT/Tools/unreal/BlackjackUnreal.git"]],
+                RelativeTargetDir:"Engine/Plugins/BlackjackUnreal"
+            ],
+            [
+                Branches:[["name":"master"]],
+                UserRemoteConfigs:[["url": "git@192.168.5.23:TaT/Tools/unreal/HoudiniEngineForUnreal.git"]],
+                RelativeTargetDir:"Engine/Plugins/HoudiniEngine"
+            ],
+            [
+                Branches:[["name":"master"]],
+                UserRemoteConfigs:[["url": "git@192.168.5.23:TaT/Tools/unreal/blackjackuatexport.git"]],
+                RelativeTargetDir:"Engine/Plugins/BlackJackUatExport"
+            ]
+        ],
+        "AssignedLabel":"UE_Build_8.172",
+        Branches:[["name":"master"]],
+        "UserRemoteConfigs":[["url": "http://192.168.5.23:8090/TaT/Tools/unreal/UnrealEngine.git"]],
+        "Submodule":false,
+        "Credential":"build_BE",
+        // "RelativeTargetDir":"UnrealEngine",
+        "EnvironmentParams":[
+            "DingRobot":"e968a20b-5d47-4569-b093-aaed18554ae6",
+            "MailTo":"zengjianxiong@blackjack-inc.com",
+            "Rootpath":Rootpath,
+            "ProjectPathClient":ProjectPathClient,
+            "SvnPath":SvnPath,
+            "CopyBridgepath":"E:\\JenkinsPipeline\\UnrealEngine_Release\\UnrealEngine\\StartBuildBAT",
+            "FastbuildCopyNewPath":"E:\\JenkinsPipeline\\UnrealEngine_Release\\UnrealEngine\\StartBuildBAT\\FastbuildCopyNew",
+            "BlackjackPythonPath":"E:\\JenkinsPipeline\\blackjack-python",
+            "BlackjackUnrealPath":"E:\\JenkinsPipeline\\BlackjackUnreal",
+            "UnrealWikiPath":"E:\\JenkinsPipeline\\BlackjackUnreal.wiki",
+            "CopyBridge":"CopyBridge.Bat",
+            "FastBuildCopy":"FastBuildCopy.Bat",
+            "GenerateWiki":"Generate.bat",
+        ]
+        
+    ]
+)

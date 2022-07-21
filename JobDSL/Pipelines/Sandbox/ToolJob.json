@@ -1,0 +1,14 @@
+{
+    "ConcurrentBuild": true,
+    "Jobs":{       
+        "MasterProjectSeed":{
+            "Name":"tool_job",
+            "JenkinsScript": "Sandbox/ToolJob.jenkinsfile",
+            "StringParams":{      
+                "agenthost":["","select a agent host"]
+
+            }
+            
+        }
+    }
+}

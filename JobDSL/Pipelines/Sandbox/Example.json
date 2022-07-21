@@ -1,0 +1,11 @@
+{
+"Jobs":{
+    "MasterProjectSeed":{
+        "Name":"Sandbox.Example",
+        "JenkinsScript": "Sandbox/Example.jenkinsfile",
+        "StringParams":{
+            "Test":["","String to print"]
+        }
+    }
+}
+}

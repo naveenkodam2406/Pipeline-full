@@ -1,0 +1,11 @@
+@Library('Sandbox') _
+ToolJob([
+   Branches:[["name":"ProjectZ/PBT1"]],
+        UserRemoteConfigs:[["url": "ssh://git@192.168.5.38:4422/projectZ/projectz.git"]],
+        Credential:"projectz_ssh",
+        Submodule:true, 
+        UserExclusion:"""|Z_Agent
+            |z_agent
+            |Z_Agent@blackjack-inc.com
+        """.stripMargin(),
+])

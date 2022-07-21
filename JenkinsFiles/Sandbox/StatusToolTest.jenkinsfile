@@ -1,0 +1,7 @@
+@Library('Sandbox') _
+StatusToolTest([
+    Branches:[["name":"master"]],
+    UserRemoteConfigs:[["url": "http://192.168.5.23:8090/BuildEngineer/Jenkins/JenkinsTools/JenkinsStatusTool.git"]],
+    LocalBranch:"master",
+    "Credential":"GitExtensions_Build",
+])

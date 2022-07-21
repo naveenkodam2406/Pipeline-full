@@ -1,0 +1,17 @@
+{
+    "ConcurrentBuild": false,
+    
+    "Jobs": {        
+        "WikiBuild": {
+            "JenkinsScript": "Sandbox/WikiBuild.jenkinsfile",
+            "Name": "WikiBuildWebappp",
+            "Desc":"Wiki Packaged ",
+            "StringParams":{
+                "versionPrefix":["Test","版本前缀"]
+            },
+            "ChoiceParams":{
+                "Branch":{"Items":["develop","master"], "Desc":"编译的分支"}
+            }
+        }
+    }
+}
